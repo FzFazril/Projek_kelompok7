@@ -1,5 +1,5 @@
 <?php
-include "koneksi.php";
+include "../asset/config/koneksi.php";
 
 if (isset($_POST['submit'])) {
     $judul_buku = $_POST['judul_buku'];
@@ -30,8 +30,8 @@ if (isset($_POST['submit'])) {
     <input type="text" name="pengarang" placeholder="Karakter Anime">
     <input type="text" name="penerbit" placeholder="Jenis Kelamin">
     <input type="text" name="tahun_terbit" placeholder="Jenis Kelamin">
-    <input type="text" name="sinopsis" placeholder="Jenis Kelamin">
-    <textarea type="text" name="stok" placeholder="Jenis Kelamin"></textarea>
+    <textarea type="text" name="sinopsis" placeholder="Jenis Kelamin"></textarea>
+    <inout type="text" name="stok" placeholder="Jenis Kelamin">
 
     <button type="submit" name="submit">Simpan</button>
 </form>
