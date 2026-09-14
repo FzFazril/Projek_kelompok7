@@ -1,5 +1,5 @@
 <?php
-include "../asset/config/koneksi.php";
+include "../../config/koneksi.php";
 
 if (isset($_POST['submit'])) {
     $judul_buku = $_POST['judul_buku'];
@@ -10,12 +10,11 @@ if (isset($_POST['submit'])) {
     $stok = $_POST['stok'];
 
     $query = "INSERT INTO buku
-              (judul_buku,pengarang,penerbit,tahun_terbit,sinopsis,stok) 
-              VALUES
-               ('$judul_buku','$pengarang','$penerbit','$tahun_terbit','$sinopsis','$stok')";
+            (judul_buku, pengarang, penerbit, tahun_terbit, sinopsis, stok) VALUES
+            ('$judul_buku','$pengarang','$penerbit','$tahun_terbit','$sinopsis','$stok')";
 
     mysqli_query($koneksi, $query);
-    header("location:tampil.php");
+    header("location:buku.php");
 }
 ?>
 
@@ -26,15 +25,19 @@ if (isset($_POST['submit'])) {
 <body>
 
 <form action="" method="POST">
-    <input type="text" name="judul_buku" placeholder="Nama Anime">
-    <input type="text" name="pengarang" placeholder="Karakter Anime">
-    <input type="text" name="penerbit" placeholder="Jenis Kelamin">
-    <input type="text" name="tahun_terbit" placeholder="Jenis Kelamin">
-    <textarea type="text" name="sinopsis" placeholder="Jenis Kelamin"></textarea>
-    <inout type="text" name="stok" placeholder="Jenis Kelamin">
-
-    <button type="submit" name="submit">Simpan</button>
-</form>
-
+    <label for="judul_buku">Judul Buku</label><br>
+    <input type="text" name="judul_buku" placeholder="contoh: Laskar Pelangi" required><br>
+    <label for="pengarang">Pengarang</label><br>
+    <input type="text" name="pengarang" placeholder="contoh: Tere Liye"><br>
+    <label for="penerbit">Penerbit</label><br>
+    <input type="text" name="penerbit" placeholder="contoh: Pt. Maju Mundur"><br>
+    <label for="tahun_terbit">Tahun Terbit</label><br>
+    <input type="number" name="tahun_terbit" placeholder="contoh: 2017" min="1900" max="2099" required><br>
+    <label for="sinopsis">Sinopsis</label><br>
+    <textarea name="sinopsis" id="sinopsis" placeholder="tuliskan deskripsi singkat tentang buku tersebut"></textarea><br>
+    <label for="stok">Stok</label><br>
+    <input type="number" name="stok" placeholder="comtoh: 67"><br>
+    <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+    </form>
 </body>
 </html>

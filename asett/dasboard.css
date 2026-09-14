@@ -1,0 +1,136 @@
+/* Reset & Fondasi Utama */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    color: #333333;
+}
+
+/* Sidebar Warna Merah Deep / Dark Crimson */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #8B0000 0%, #5A0000 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+    min-height: 100vh;
+}
+
+.sidebar .brand {
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+}
+
+.sidebar .brand img {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    filter: brightness(0) invert(1); /* Membantu logo terlihat terang jika berwarna gelap */
+}
+
+/* Navigasi Links */
+.sidebar .nav-links {
+    list-style: none;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .nav-links a {
+    display: block;
+    padding: 14px 25px;
+    color: #f1f1f1;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-left-color: #ff6b6b;
+    padding-left: 30px;
+}
+
+/* Area Konten Utama */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: #f4f6f9;
+}
+
+/* Header Atas / Topbar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    border-left: 5px solid #a80000;
+}
+
+.topbar h1 {
+    font-size: 22px;
+    color: #8B0000;
+    font-weight: 700;
+}
+
+.topbar .user-profile {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555555;
+    background-color: #ffe6e6;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #ffcccc;
+}
+
+/* Kartu Statistik Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-top: 4px solid #a80000;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(168, 0, 0, 0.12);
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.stat-card .stat-number {
+    font-size: 26px;
+    font-weight: 700;
+    color: #8B0000;
+}
