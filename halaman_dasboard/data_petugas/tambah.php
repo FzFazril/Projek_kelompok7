@@ -1,40 +1,37 @@
 <?php
-include "../asset/config/koneksi.php";
+include "../../config/koneksi.php";
 
 if (isset($_POST['submit'])) {
-    $judul_buku = $_POST['judul_buku'];
-    $pengarang = $_POST['pengarang'];
-    $penerbit = $_POST['penerbit'];
-    $tahun_terbit = $_POST['tahun_terbit'];
-    $sinopsis = $_POST['sinopsis'];
-    $stok = $_POST['stok'];
-
-    $query = "INSERT INTO data
-              (judul_buku,pengarang,penerbit,tahun_terbit,sinopsis,stok) 
-              VALUES
-               ('$judul_buku','$pengarang','$penerbit','$tahun_terbit','$sinopsis','$stok')";
+    $nama_lengkap = $_POST['nama_lengkap'];
+    $jabatan = $_POST['jabatan'];
+    $no_hp = $_POST['no_hp'];
+    $query = "INSERT INTO petugas
+            (nama_lengkap, jabatan, no_hp) VALUES
+            ('$nama_lengkap','$jabatan','$no_hp')";
 
     mysqli_query($koneksi, $query);
-    header("location:tampil.php");
+    header("location:petugas.php");
 }
 ?>
 
 <html>
 <head>
+<<<<<<< HEAD
     <title>Tambah Data petugas/title>
+=======
+    <title>Tambah Data Petugas</title>
+>>>>>>> cf6e5248aebe11c4f826dcbcf9c9596a8029596f
 </head>
 <body>
 
 <form action="" method="POST">
-    <input type="text" name="judul_buku" placeholder="Nama Anime">
-    <input type="text" name="pengarang" placeholder="Karakter Anime">
-    <input type="text" name="penerbit" placeholder="Jenis Kelamin">
-    <input type="text" name="tahun_terbit" placeholder="Jenis Kelamin">
-    <textarea type="text" name="sinopsis" placeholder="Jenis Kelamin"></textarea>
-    <input type="text" name="stok" placeholder="Jenis Kelamin">
-
-    <button type="submit" name="submit">Simpan</button>
-</form>
-
+    <label for="nama_lengkap">Nama Lengkap</label><br>
+    <input type="text" name="nama_lengkap" placeholder="contoh: Muhamad Fazril" required><br>
+    <label for="Jabatan">Jabatan</label><br>
+    <input type="text" name="jabatan" placeholder="contoh: Ketua Perpustakaan"><br>
+    <label for="no_hp">No telepon</label><br>
+    <input type="number" name="no_hp" placeholder="contoh: 0855*******" required><br>
+    <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+    </form>
 </body>
 </html>

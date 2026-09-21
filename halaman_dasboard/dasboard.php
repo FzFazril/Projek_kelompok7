@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Dasboard</title>
-    <link rel="stylesheet" href="../asett/side_bar.css">
+    <link rel="stylesheet" href="../asett/dasboard.css?v=2">
 </head>
 <body>
 <aside class="sidebar">
     <div class="brand">
-    <h2>BacaGrid</h2>
+    <img src="../asett/logo_horizontal.webp" alt="logo">
     </div>
     <ul class="nav-links">
-        <a href="index.php">Beranda</a>
-        <a href="../halaman_dasboard/./data_petugas/petugas.php">data Petugas</a>
-        <a href="../halaman_dasboard/./data_peminjaman/pinjam.php">Data peminjam</a>
-        <a href="../halaman_dasboard/data_buku/buku.php">Data Buku</a>
+    <li><a href="dasboard.php">Beranda</a></li>
+    <li><a href="./data_petugas/petugas.php">Data Petugas</a></li>
+    <li><a href="./data_peminjaman/pinjam.php">Data Peminjam</a></li>
+    <li><a href="./data_buku/buku.php">Data Buku</a></li>
     </ul>
 </aside>
 
@@ -25,7 +25,7 @@
     <!-- Header Atas Dashboard -->
     <header class="topbar">
     <h1>Beranda Dashboard</h1>
-    <div class="user-profile">Welcome to BacaaGrid</div>
+    <div class="user-profile">Welcome to BacaGrid</div>
     </header>
 
     <!-- Ringkasan Statistik / Kartu Angka -->
