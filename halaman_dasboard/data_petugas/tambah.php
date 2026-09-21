@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
 <html>
 <head>
-    <title>Data/title>
+    <title>Tambah Data petugas/title>
 </head>
 <body>
 
