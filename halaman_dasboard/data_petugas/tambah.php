@@ -16,7 +16,11 @@ if (isset($_POST['submit'])) {
 
 <html>
 <head>
+<<<<<<< HEAD
+    <title>Tambah Data petugas/title>
+=======
     <title>Tambah Data Petugas</title>
+>>>>>>> cf6e5248aebe11c4f826dcbcf9c9596a8029596f
 </head>
 <body>
 
