@@ -16,18 +16,22 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 
 <aside class="sidebar">
     <div class="brand">
-    <img src="../../asett/logo_horizontal.webp" alt="logo">
+    <img src="../../asett/logo_vertikal.webp" alt="logo">
     </div>
     <ul class="nav-links">
-    <li><a href="../dasboard.php">Beranda</a></li>
-    <li><a href="../data_petugas/petugas.php">Data Petugas</a></li>
-    <li><a href="../data_peminjaman/pinjam.php">Data Peminjam</a></li>
-    <li><a href="../data_buku/buku.php">Data Buku</a></li>
+        <li><a href="../dasboard.php">Beranda</a></li>
+        <li><a href="../data_petugas/petugas.php">Data Petugas</a></li>
+        <li><a href="../data_peminjaman/pinjam.php">Data Peminjam</a></li>
+        <li><a href="../data_buku/buku.php">Data Buku</a></li>
+        <li><a href="../../halaman_Utama/index.php">Kembali</a></li>
     </ul>
 </aside>
 </div>
 <div class="main-content">
-    <h2>Data Buku</h2>
+    <header class="topbar">
+    <h1>Data Peminjam</h1>
+    <div class="user-profile">Kelola Data Peminjam</div>
+    </header>
     <table>
         <thead>
             <tr>
@@ -49,6 +53,9 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
             <td><?= $row['nama_lengkap']; ?></td>
             <td><?= $row['kelas']; ?></td>
             <td><?= $row['no_hp']; ?></td>
+            <td><?= $row['id_buku']; ?></td>
+            <td><?= $row['nama_buku']; ?></td>
+            <td><?= $row['jumlah']; ?></td>
         </tr>
         <?php endforeach; ?>
         </tbody>

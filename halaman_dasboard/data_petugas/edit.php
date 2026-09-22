@@ -32,12 +32,54 @@ if (!$data) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>edit Petugas</title>
+    <!-- Link CSS Dashboard Utama -->
+    <link rel="stylesheet" href="../../asett/dasboard.css?v=2">
+    <!-- Link CSS Form Baru -->
+    <link rel="stylesheet" href="../../asett/form.css?v=1">
 <body>
-    <form action="" method="POST">
-    <input type="text" name="nama_lengkap" value="<?= $data['nama_lengkap']?>"><br>
-    <input type="text" name="jabatan" value="<?= $data['jabatan']?>"><br>
-    <input type="text" name="no_hp" value="<?= $data['no_hp']?>"><br>
-    <button type="submit" name="submit">Edit</button>
-    </form>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <img src="../../asett/logo_vertikal.webp" alt="logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="../dasboard.php">Beranda</a></li>
+            <li><a href="../data_petugas/petugas.php">Data Petugas</a></li>
+            <li><a href="../data_peminjaman/pinjam.php">Data Peminjam</a></li>
+            <li><a href="buku.php">Data Buku</a></li>
+        </ul>
+    </aside>
+    <!-- Area Konten Utama -->
+    <main class="main-content">
+        <!-- Header Atas -->
+        <header class="topbar">
+            <h1>Edit Data Petugas</h1>
+            <div class="user-profile">Welcome to BacaGrid</div>
+        </header>
+    <!-- Form Edit Buku -->
+        <section class="form-card">
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="nama_lengkap">Nama Lengkap:</label>
+                    <input type="text" id="nama_lengkap" name="nama_lengkap" value="<?= htmlspecialchars($data['nama_lengkap']) ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="jabatan">Jabatan:</label>
+                    <input type="text" id="jabatan" name="jabatan" value="<?= htmlspecialchars($data['jabatan']) ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="no_hp">Nomor Telepon:</label>
+                    <input type="number" id="no_hp" name="no_hp" value="<?= htmlspecialchars($data['no_hp']) ?>" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" name="submit" class="btn-submit">Simpan Perubahan</button>
+                    <a href="petugas.php" class="btn-cancel">Batal</a>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
 </html>
