@@ -10,9 +10,9 @@ if (isset($_POST['submit'])) {
     $stok = $_POST['stok'];
 
     $query = "INSERT INTO pinjam
-              (judul_buku,pengarang,penerbit,tahun_terbit,sinopsis,stok) 
-              VALUES
-               ('$judul_buku','$pengarang','$penerbit','$tahun_terbit','$sinopsis','$stok')";
+            (judul_buku,pengarang,penerbit,tahun_terbit,sinopsis,stok) 
+            VALUES
+            ('$judul_buku','$pengarang','$penerbit','$tahun_terbit','$sinopsis','$stok')";
 
     mysqli_query($koneksi, $query);
     header("location:tampil.php");

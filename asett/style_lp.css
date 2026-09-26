@@ -188,14 +188,16 @@
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
     }
 
     .search-box button:hover {
-    background: var(--accent-red);
+    background: linear-gradient(180deg, #a80000 0%, #6e0000 100%);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--accent-hover);
     }
 
     .hero-image img {
@@ -229,7 +231,7 @@
     /* 3. SECTION PETUGAS (BARU) */
     .petugas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
     }
 
@@ -378,6 +380,9 @@
     margin-bottom: 1rem;
     }
 
+    .book-desk {
+        margin-bottom: 10px;
+    }
     .btn-pinjam {
     display: block;
     text-align: center;
@@ -454,11 +459,12 @@
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     }
 
     .contact-form button:hover {
-    background: var(--accent-red);
+    background: linear-gradient(180deg, #a80000 0%, #6e0000 100%);
+    transform: scale(1.01);
     }
 
     /* Footer */

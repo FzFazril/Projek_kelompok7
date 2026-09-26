@@ -4,6 +4,10 @@ include "../config/koneksi.php";
 $query = "SELECT * FROM buku";
 $hasil = mysqli_query($koneksi, $query);
 $data_buku = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
+
+$query = "SELECT * FROM petugas";
+$hasil = mysqli_query($koneksi, $query);
+$data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +18,7 @@ $data_buku = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
   <title>BacaGrid - Perpustakaan Digital</title>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="../asett/style_lp.css">
+  <link rel="stylesheet" href="../asett/style_lp.css?v=3">
 </head>
 <body>
 
@@ -31,7 +35,7 @@ $data_buku = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
       <li><a href="#aturan">Aturan</a></li>
       <li><a href="#katalog">Pilih Buku</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="../form_login/login.php" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>
+      <li><a href="../form/login.php" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>
     </ul>
   </nav>
 
@@ -49,7 +53,7 @@ $data_buku = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     </div>
     
     <div class="hero-image">
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/online-library-4438847-3684841.png" alt="Ilustrasi BacaGrid">
+      <img src="../asett/gedung.jpg" alt="Ilustrasi BacaGrid">
     </div>
   </section>
 
@@ -75,44 +79,22 @@ $data_buku = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
       <p>Petugas kami yang siap membantu segala kebutuhan literasi Anda</p>
     </div>
     <div class="petugas-grid">
-      
+      <?php if (!empty($data_petugas)): ?>
+      <?php foreach ($data_petugas as $petugas): ?>
       <div class="petugas-card">
         <div class="petugas-avatar">
-          <i class="fa-solid fa-user-shield"></i>
+          <i class="fa-solid fa-user-tie"></i>
         </div>
-        <h3>Budi Santoso</h3>
-        <span class="role">Kepala Perpustakaan</span>
-        <p>Bertanggung jawab atas operasional dan pengembangan koleksi perpustakaan.</p>
+        <h3><?= htmlspecialchars($petugas['nama_lengkap']); ?></h3>
+        <span class="role"><?= htmlspecialchars($petugas['jabatan']); ?></span>
+        <p><?= htmlspecialchars($petugas['deskripsi']); ?></p>
+        
       </div>
-
-      <div class="petugas-card">
-        <div class="petugas-avatar">
-          <i class="fa-solid fa-user-gear"></i>
-        </div>
-        <h3>Siti Aminah</h3>
-        <span class="role">Administrator Sistem</span>
-        <p>Mengelola keanggotaan dan pembaruan data digital pada sistem BacaGrid.</p>
+        <?php endforeach; ?>
       </div>
-
-      <div class="petugas-card">
-        <div class="petugas-avatar">
-          <i class="fa-solid fa-user-check"></i>
-        </div>
-        <h3>Rian Pratama</h3>
-        <span class="role">Petugas Pelayanan</span>
-        <p>Membantu proses sirkulasi peminjaman dan pengembalian buku fisik.</p>
-      </div>
-
-      <div class="petugas-card">
-        <div class="petugas-avatar">
-          <i class="fa-solid fa-user-astronaut"></i>
-        </div>
-        <h3>Dewi Lestari</h3>
-        <span class="role">Pustakawan Referensi</span>
-        <p>Siap membantu pencarian literatur dan karya ilmiah untuk kebutuhan riset.</p>
-      </div>
-
-    </div>
+      <?php else: ?> 
+      <p style="text-align: center; width: 100%;">Belum ada data petugas.</p>
+      <?php endif; ?>
   </section>
 
   <!-- 4. ATURAN PERPUSTAKAAN SECTION -->
@@ -130,7 +112,7 @@ $data_buku = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
       <div class="rule-card">
         <i class="fa-solid fa-clock rule-icon"></i>
         <h3>Batas Waktu Peminjaman</h3>
-        <p>Batas waktu peminjaman buku fisik maksimal 7 hari. Perpanjangan dapat dilakukan online melalui sistem sebelum jatuh tempo.</p>
+        <p>Batas waktu peminjaman buku fisik maksimal 3 hari. Perpanjangan dapat dilakukan online melalui sistem sebelum jatuh tempo.</p>
       </div>
       <div class="rule-card">
         <i class="fa-solid fa-hand-holding-heart rule-icon"></i>
@@ -180,9 +162,10 @@ $data_buku = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
                 <span class="book-category"><?= htmlspecialchars($buku['penerbit']); ?></span>
                 <h4 class="book-title"><?= htmlspecialchars($buku['judul_buku']); ?></h4>
                 <p class="book-author">Oleh: <?= htmlspecialchars($buku['pengarang']); ?></p>
-                <small>Stok: <?= $buku['stok']; ?></small>
+                <p class="book-desk"><?= htmlspecialchars($buku['sinopsis']); ?></p>
               </div>
-              <a href="dasboard.php" class="btn-pinjam"><i class="fa-solid fa-bookmark"></i> Pinjam Buku</a>
+                <a href="../form/form_pinjam.php?id_buku=<?= $buku['id_buku']; ?>" class="btn-pinjam">
+                  <i class="fa-solid fa-bookmark"></i> Pinjam Buku</a>
             </div>
           </div>
         <?php endforeach; ?>

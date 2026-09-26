@@ -7,10 +7,13 @@ if(isset($_POST['submit'])){
     $nama_lengkap = $_POST['nama_lengkap'];
     $jabatan = $_POST['jabatan'];
     $no_hp = $_POST['no_hp'];
+    $deskripsi = $_POST['deskripsi'];
     $query = "UPDATE petugas SET
             nama_lengkap = '$nama_lengkap', 
             jabatan = '$jabatan', 
-            no_hp = '$no_hp'
+            no_hp = '$no_hp',
+            deskripsi = '$deskripsi'
+
             WHERE id_petugas ='$id'";
 
     mysqli_query($koneksi, $query);
@@ -72,6 +75,11 @@ if (!$data) {
                 <div class="form-group">
                     <label for="no_hp">Nomor Telepon:</label>
                     <input type="number" id="no_hp" name="no_hp" value="<?= htmlspecialchars($data['no_hp']) ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="deskripsi">deskripsi:</label>
+                    <textarea name="deskripsi" id="deskripsi"><?= htmlspecialchars($data['deskripsi']) ?></textarea>
                 </div>
 
                 <div class="form-actions">
