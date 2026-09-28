@@ -2,27 +2,32 @@
 include "../../config/koneksi.php";
 
 if (isset($_POST['submit'])) {
-    $judul_buku  = $_POST['judul_buku'];
-    $pengarang   = $_POST['pengarang'];
-    $penerbit    = $_POST['penerbit'];
-    $tahun_terbit= $_POST['tahun_terbit'];
-    $sinopsis    = $_POST['sinopsis'];
-    $stok        = $_POST['stok'];
+    $judul_buku   = $_POST['judul_buku'];
+    $pengarang    = $_POST['pengarang'];
+    $penerbit     = $_POST['penerbit'];
+    $tahun_terbit = $_POST['tahun_terbit'];
+    $sinopsis     = $_POST['sinopsis'];
+    $stok         = $_POST['stok'];
 
     $cover_baru = "";
     if (isset($_FILES['cover']['name']) && $_FILES['cover']['name'] != "") {
-        $nama_file = $_FILES['cover']['name'];
-        $tmp_name  = $_FILES['cover']['tmp_name'];
-        $cover_baru= time() . '_' . $nama_file;
+        $nama_file  = $_FILES['cover']['name'];
+        $tmp_name   = $_FILES['cover']['tmp_name'];
+        $cover_baru = time() . '_' . $nama_file;
         
         move_uploaded_file($tmp_name, "../../asett/uploads/" . $cover_baru);
     }
 
-    $query = "INSERT INTO buku
-            (cover, judul_buku, pengarang, penerbit, tahun_terbit, sinopsis, stok) VALUES
-            ('$cover_baru','$judul_buku','$pengarang','$penerbit','$tahun_terbit','$sinopsis','$stok')";
+    // 1. Siapkan query dengan placeholder (?)
+    $stmt = mysqli_prepare($koneksi, "INSERT INTO buku (cover, judul_buku, pengarang, penerbit, tahun_terbit, sinopsis, stok) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    
+    // 2. Bind parameter
+    mysqli_stmt_bind_param($stmt, "ssssisi", $cover_baru, $judul_buku, $pengarang, $penerbit, $tahun_terbit, $sinopsis, $stok);
+    
+    // 3. Eksekusi dan tutup statement
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 
-    mysqli_query($koneksi, $query);
     header("location:buku.php");
     exit;
 }
