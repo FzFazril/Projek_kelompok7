@@ -5,6 +5,21 @@ $query = "SELECT * FROM buku";
 $hasil = mysqli_query($koneksi, $query);
 $data_buku = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 
+// 1. Ambil kata kunci pencarian judul buku dari URL
+$keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
+
+// 2. Query pencarian HANYA berdasarkan judul buku
+if (!empty($keyword)) {
+    $keyword_escaped = mysqli_real_escape_string($koneksi, $keyword);
+    $query_buku = "SELECT * FROM buku WHERE judul_buku LIKE '%$keyword_escaped%'";
+} else {
+    // Jika tidak ada kata kunci, tampilkan semua buku
+    $query_buku = "SELECT * FROM buku";
+}
+
+$hasil_buku = mysqli_query($koneksi, $query_buku);
+$data_buku  = mysqli_fetch_all($hasil_buku, MYSQLI_ASSOC);
+
 $query = "SELECT * FROM petugas";
 $hasil = mysqli_query($koneksi, $query);
 $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
@@ -45,11 +60,6 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
       <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Perpustakaan Digital BacaGrid</span>
       <h1>Jelajahi Ilmu, Temukan Inspirasi</h1>
       <p><strong>BacaGrid</strong> adalah ruang digital untuk menjelajahi berbagai koleksi buku dengan mudah. Temukan bacaan favoritmu, tambah wawasan, dan nikmati pengalaman membaca dalam satu tempat.</p>
-      
-      <form class="search-box" action="#katalog">
-        <input type="text" placeholder="Cari judul buku, penulis, atau ISBN...">
-        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
-      </form>
     </div>
     
     <div class="hero-image">
@@ -132,6 +142,19 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     <div class="section-title">
       <h2>Pilihan Buku Populer</h2>
       <p>Pilih buku yang ingin Anda baca atau pinjam</p>
+    </div>
+    <div style="max-width: 500px; margin: 0 auto 30px auto;">
+      <form class="search-box" action="index.php#katalog" method="GET">
+        <input type="text" name="keyword" placeholder="Cari judul buku..." value="<?= htmlspecialchars($keyword); ?>">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+      </form>
+
+      <?php if (!empty($keyword)): ?>
+        <p style="text-align: center; margin-top: 10px; font-size: 0.9rem;">
+          Pencarian judul: "<strong><?= htmlspecialchars($keyword); ?></strong>" 
+          (<a href="?#katalog">Lihat Semua Buku</a>)
+        </p>
+      <?php endif; ?>
     </div>
     <div class="book-grid">
       <?php if (!empty($data_buku)): ?>

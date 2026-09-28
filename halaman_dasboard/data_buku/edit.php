@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Buku - BacaGrid</title>
-    
+
     <!-- Link CSS Dashboard Utama -->
     <link rel="stylesheet" href="../../asett/dasboard.css?v=2">
     <!-- Link CSS Form Baru -->
@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
 </head>
 </head>
 <body>
-    
+
 <aside class="sidebar">
     <div class="brand">
         <img src="../../asett/logo_vertikal.webp" alt="logo">

@@ -16,6 +16,7 @@ $data_pinjam = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data peminjaman</title>
+    <link rel="stylesheet" href="../../asett/form.css?v=3">
     <link rel="stylesheet" href="../../asett/dasboard.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
@@ -59,7 +60,17 @@ $data_pinjam = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         <td><?= htmlspecialchars($row['judul_buku']); ?></td>
         <td><?= $row['tgl_pinjam']; ?></td>
         <td><?= $row['tgl_kembali']; ?></td>
-        <td><?= $row['status']; ?></td>
+        <td><?= $row['status']; ?>
+        </td>
+        <td>
+            <div class="aksi">
+                    <?php if($row['status'] == "Dipinjam") : ?>
+                        <a href="../../proses/proses_kembali.php?id_peminjaman=<?= $row['id_peminjaman']; ?>&id_buku=<?= $row['id_buku']; ?>" class="btn-kembali">kembalikan</a>
+                    <?php else : ?>
+                        <span>Selesai</span>
+                    <?php endif; ?>
+            </div>
+        </td>
     </tr>
     <?php endforeach; ?>
     </tbody>
