@@ -119,6 +119,7 @@
     gap: 6px;
     text-decoration: none;
     color: red;
+    background-color: white;
     border: 1px solid red;
     border-radius: 6px;
     padding: 6px 14px;
@@ -128,7 +129,9 @@
 }
 
 .btn-kembali:hover {
+    background-color: red;
     border-color: red;
+    color: white;
     box-shadow: 0 2px 6px rgba(235, 37, 37, 0.25);
 }
 

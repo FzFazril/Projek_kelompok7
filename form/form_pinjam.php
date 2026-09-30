@@ -36,6 +36,7 @@ $buku  = mysqli_fetch_assoc($hasil);
     <input type="number" name="durasi_pinjam" min="1" placeholder="contoh: 7"  required><br><br>
 
     <button type="submit" name="submit_pinjam">Ajukan Peminjaman</button>
+    <a href="../halaman_Utama/index.php"></a>
 </form>
 
 </body>
