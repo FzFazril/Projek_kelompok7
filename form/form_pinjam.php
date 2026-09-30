@@ -17,6 +17,7 @@ $buku  = mysqli_fetch_assoc($hasil);
 </head>
 <body>
 
+<h2>Formulir Peminjaman Buku</h2>
 <!-- Info Buku yang dipinjam -->
 <p><strong>Judul Buku:</strong> <?= htmlspecialchars($buku['judul_buku']); ?></p>
 <p><strong>Pengarang:</strong> <?= htmlspecialchars($buku['pengarang']); ?></p>
@@ -32,8 +33,8 @@ $buku  = mysqli_fetch_assoc($hasil);
     <label>Tanggal Pinjam:</label><br>
     <input type="date" name="tgl_pinjam" value="<?= date('Y-m-d'); ?>" required><br><br>
 
-    <label>Lama Pinjam (Hari):</label><br>
-    <input type="number" name="durasi_pinjam" min="1" placeholder="contoh: 7"  required><br><br>
+    <label>Tanggal Kembali:</label><br>
+    <input type="date" name="tgl_kembali" required><br><br>
 
     <button type="submit" name="submit_pinjam">Ajukan Peminjaman</button>
     <a href="../halaman_Utama/index.php"></a>
