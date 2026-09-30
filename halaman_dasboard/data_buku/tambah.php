@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 <head>
     <title>Tambah Data Buku</title>
     <!-- Link CSS Dashboard Utama -->
-    <link rel="stylesheet" href="../../asett/dasboard.css?v=2">
+    <link rel="stylesheet" href="../../asett/dasboard.css?v=4">
     <!-- Link CSS Form Baru -->
     <link rel="stylesheet" href="../../asett/form.css?v=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">

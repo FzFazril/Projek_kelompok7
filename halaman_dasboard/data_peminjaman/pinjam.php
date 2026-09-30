@@ -16,7 +16,7 @@ $data_pinjam = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data peminjaman</title>
-    <link rel="stylesheet" href="../../asett/form.css?v=3">
+    <link rel="stylesheet" href="../../asett/form.css?v=5">
     <link rel="stylesheet" href="../../asett/dasboard.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
@@ -59,8 +59,17 @@ $data_pinjam = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         <td><?= htmlspecialchars($row['nama_peminjam']); ?></td>
         <td><?= htmlspecialchars($row['judul_buku']); ?></td>
         <td><?= $row['tgl_pinjam']; ?></td>
-        <td><?= $row['tgl_kembali']; ?></td>
-        <td><?= $row['status']; ?>
+        <td><?= date('Y-m-d', strtotime($row['tgl_kembali'])); ?></td>
+        <td>
+        <?php if ($row['status'] === "Dipinjam") : ?>
+            <span class="badge-status badge-dipinjam">
+                <i class="fa-solid fa-clock-rotate-left"></i> Dipinjam
+            </span>
+        <?php else : ?>
+            <span class="badge-status badge-dikembalikan">
+                <i class="fa-solid fa-circle-check"></i> Dikembalikan
+            </span>
+        <?php endif; ?>
         </td>
         <td>
             <div class="aksi">

@@ -33,7 +33,7 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
   <title>BacaGrid - Perpustakaan Digital</title>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="../asett/style_lp.css?v=3">
+  <link rel="stylesheet" href="../asett/style_lp.css?v=5">
 </head>
 <body>
 
@@ -56,15 +56,13 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 
   <!-- 1. HOME SECTION -->
   <section class="hero" id="home">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Perpustakaan Digital BacaGrid</span>
       <h1>Jelajahi Ilmu, Temukan Inspirasi</h1>
       <p><strong>BacaGrid</strong> adalah ruang digital untuk menjelajahi berbagai koleksi buku dengan mudah. Temukan bacaan favoritmu, tambah wawasan, dan nikmati pengalaman membaca dalam satu tempat.</p>
     </div>
     
-    <div class="hero-image">
-      <img src="../asett/gedung.jpg" alt="Ilustrasi BacaGrid">
-    </div>
   </section>
 
   <!-- 2. ABOUT SECTION -->

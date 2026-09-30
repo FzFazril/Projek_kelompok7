@@ -86,18 +86,58 @@
     background-color: #5a6268;
 }
 
+/* Styling Badge Status Soft & Clean */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: capitalize;
+}
+
+/* Status Dipinjam (Kuning/Oranye untuk Menandakan Proses/Pending) */
+.badge-dipinjam {
+    background-color: #fff7ed;
+    color: #c2410c;
+    border: 1px solid #ffedd5;
+}
+
+/* Status Dikembalikan (Hijau Soft untuk Selesai) */
+.badge-dikembalikan {
+    background-color: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #dcfce7;
+}
+
+/* Tombol Aksi "Kembalikan" (Mengikuti Warna Akses Biru Modern) */
 .btn-kembali {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     text-decoration: none;
     color: red;
     border: 1px solid red;
-    border-radius: 10px;
-    padding: 5px;
-    transition: 0.3s;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
 }
 
-.btn-kembali:hover{
-    color: white;
-    background-color: red;
-    border-radius: 10px;
-    padding: 5px;
+.btn-kembali:hover {
+    border-color: red;
+    box-shadow: 0 2px 6px rgba(235, 37, 37, 0.25);
+}
+
+/* Status Selesai/Non-aktif */
+.text-selesai {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 500;
 }

@@ -1,10 +1,23 @@
+<?php
+include '../config/koneksi.php';
+
+// Menggabungkan tabel peminjaman dan tabel buku berdasarkan id_buku
+$query = "SELECT peminjaman.*, buku.judul_buku 
+        FROM peminjaman 
+        JOIN buku ON peminjaman.id_buku = buku.id_buku 
+        ORDER BY peminjaman.id_peminjaman DESC";
+
+$hasil = mysqli_query($koneksi, $query);
+$data_pinjam = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Dasboard</title>
-    <link rel="stylesheet" href="../asett/dasboard.css?v=2">
+    <link rel="stylesheet" href="../asett/form.css?v=1">
+    <link rel="stylesheet" href="../asett/dasboard.css?v=4">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
 <body>
@@ -47,6 +60,46 @@
     <div class="stat-card">
         <h3>Aktivitas</h3>
         <p class="stat-number">99.9%</p>
+    </div>
+    </section>
+
+    <section class="data-terbaru">
+    <div class="table-data">
+        <h3>Data Terbaru Peminjam</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Peminjam</th>
+                <th>Judul Buku</th>
+                <th>Tgl Pinjam</th>
+                <th>Tgl Kembali</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($data_pinjam as $no => $row): ?>
+            <tr>
+                <td><?= $no + 1; ?></td>
+                <td><?= htmlspecialchars($row['nama_peminjam']); ?></td>
+                <td><?= htmlspecialchars($row['judul_buku']); ?></td>
+                <td><?= $row['tgl_pinjam']; ?></td>
+                <td><?= $row['tgl_kembali']; ?></td>
+                <td>
+                <?php if ($row['status'] === "Dipinjam") : ?>
+                    <span class="badge-status badge-dipinjam">
+                        <i class="fa-solid fa-clock-rotate-left"></i> Dipinjam
+                    </span>
+                <?php else : ?>
+                    <span class="badge-status badge-dikembalikan">
+                        <i class="fa-solid fa-circle-check"></i> Dikembalikan
+                    </span>
+                <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
     </section>
     </main>
