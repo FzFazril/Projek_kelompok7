@@ -1,0 +1,28 @@
+
+    #loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Tambahkan dua baris ini untuk animasi memudar */
+    opacity: 1;
+    transition: opacity 0.5s ease; 
+    }
+
+    /* Kelas untuk menyembunyikan loading secara halus */
+    #loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none; /* Mencegah klik saat sudah memudar */
+    }
+
+    .gif-loader{
+        width: 100px;
+        height: auto;
+        filter: invert(16%) sepia(99%) saturate(7404%) hue-rotate(358deg) brightness(95%) contrast(118%);
+    }

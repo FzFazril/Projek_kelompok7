@@ -36,10 +36,10 @@ if (!$data) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>edit Petugas</title>
     <!-- Link CSS Dashboard Utama -->
-    <link rel="stylesheet" href="../../asett/dasboard.css?v=4">
+    <link rel="stylesheet" href="../../asett/dasboard.css?v=6">
     <!-- Link CSS Form Baru -->
     <link rel="stylesheet" href="../../asett/form.css?v=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <body>
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -47,11 +47,11 @@ if (!$data) {
             <img src="../../asett/logo_vertikal.webp" alt="logo">
         </div>
         <ul class="nav-links">
-            <li><a href="../dasboard.php"> <i class="fa-regular fa-house"></i> Beranda</a></li>
+            <li><a href="../dasboard.php"><i class="fa-solid fa-house"></i> Beranda</a></li>
             <li><a href="../data_petugas/petugas.php"><i class="fa-solid fa-user-gear"></i> Data Petugas</a></li>
-            <li><a href="../data_peminjaman/pinjam.php"><i class="fa-solid fa-user-tag"></i> Data Peminjam</a></li>
-            <li><a href="buku.php"><i class="fa-solid fa-book"></i> Data Buku</a></li>
-            <li><a href="../../halaman_Utama/index.php"><i class="fa-solid fa-circle-left"></i> Kembali</a></li>
+            <li><a href="../data_peminjaman/pinjam.php"><i class="fa-solid fa-users-rectangle"></i> Data Peminjam</a></li>
+            <li><a href="buku.php"><i class="fa-solid fa-book-open"></i> Data Buku</a></li>
+            <li><a href="../../halaman_Utama/index.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Kembali</a></li>
         </ul>
     </aside>
     <!-- Area Konten Utama -->

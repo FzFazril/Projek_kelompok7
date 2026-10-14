@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+// Jika belum login, tendang ke form login
+if (!isset($_SESSION['status_login']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../../form/login.php");
+    exit();
+}
+
 include '../../config/koneksi.php';
 $query = "SELECT * FROM buku";
 $hasil = mysqli_query($koneksi, $query);
@@ -10,21 +18,25 @@ $data  = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Buku</title>
-    <link rel="stylesheet" href="../../asett/dasboard.css?v=4">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <link rel="stylesheet" href="../../asett/dasboard.css?v=7">
+    <link rel="stylesheet" href="../../asett/loading.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
+<!-- Layar Loading -->
+<div id="loading-screen">
+    <img src="../../asett/loading.gif" alt="Memuat..." class="gif-loader">
+</div>
 <aside class="sidebar">
     <div class="brand">
         <img src="../../asett/logo_vertikal.webp" alt="logo">
     </div>
     <ul class="nav-links">
-        <li><a href="../dasboard.php"><i class="fa-regular fa-house"></i> Beranda</a></li>
+        <li><a href="../dasboard.php"><i class="fa-solid fa-house"></i> Beranda</a></li>
         <li><a href="../data_petugas/petugas.php"><i class="fa-solid fa-user-gear"></i> Data Petugas</a></li>
-        <li><a href="../data_peminjaman/pinjam.php"><i class="fa-solid fa-user-tag"></i> Data Peminjam</a></li>
-        <li><a href="../data_buku/buku.php"><i class="fa-solid fa-book"></i> Data Buku</a></li>
-        <li><a href="../../halaman_Utama/index.php"><i class="fa-solid fa-circle-left"></i> Kembali</a></li>
+        <li><a href="../data_peminjaman/pinjam.php"><i class="fa-solid fa-users-rectangle"></i> Data Peminjam</a></li>
+        <li><a href="../data_buku/buku.php"><i class="fa-solid fa-book-open"></i> Data Buku</a></li>
+        <li><a href="../../halaman_Utama/index.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Kembali</a></li>
     </ul>
 </aside>
 
@@ -83,6 +95,6 @@ $data  = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         </tbody>
     </table>
 </div>
-
+<script src="../../asett/script.js"></script>
 </body>
 </html>

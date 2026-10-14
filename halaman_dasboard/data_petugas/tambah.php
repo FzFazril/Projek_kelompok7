@@ -12,17 +12,17 @@ if (isset($_POST['submit'])) {
 
     mysqli_query($koneksi, $query);
     header("location:petugas.php");
-}
+} 
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <title>Tambah Data petugas</title>
     <!-- Link CSS Dashboard Utama -->
-    <link rel="stylesheet" href="../../asett/dasboard.css?v=4">
+    <link rel="stylesheet" href="../../asett/dasboard.css?v=6">
     <!-- Link CSS Form Baru -->
-    <link rel="stylesheet" href="../../asett/form.css?v=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <link rel="stylesheet" href="../../asett/form.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 </head>
 <body>
@@ -31,11 +31,11 @@ if (isset($_POST['submit'])) {
     <img src="../../asett/logo_vertikal.webp" alt="logo">
     </div>
     <ul class="nav-links">
-        <li><a href="../dasboard.php"><i class="fa-regular fa-house"></i> Beranda</a></li>
+        <li><a href="../dasboard.php"><i class="fa-solid fa-house"></i> Beranda</a></li>
         <li><a href="../data_petugas/petugas.php"><i class="fa-solid fa-user-gear"></i> Data Petugas</a></li>
-        <li><a href="../data_peminjaman/pinjam.php"><i class="fa-solid fa-user-tag"></i> Data Peminjam</a></li>
-        <li><a href="../data_buku/buku.php"><i class="fa-solid fa-book"></i> Data Buku</a></li>
-        <li><a href="../../halaman_Utama/index.php"><i class="fa-solid fa-circle-left"></i> Kembali</a></li>
+        <li><a href="../data_peminjaman/pinjam.php"><i class="fa-solid fa-users-rectangle"></i> Data Peminjam</a></li>
+        <li><a href="../data_buku/buku.php"><i class="fa-solid fa-book-open"></i> Data Buku</a></li>
+        <li><a href="../../halaman_Utama/index.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Kembali</a></li>
     </ul>
 </aside>
     <!-- Area Konten Utama -->
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="form-group">
                     <label for="Jabatan">Jabatan</label>
-                    <input type="text" name="jabatan" placeholder="contoh: Ketua Perpustakaan">
+                    <input type="text" name="jabatan" placeholder="contoh: Ketua Perpustakaan" required>
                 </div>
 
                 <div class="form-group">
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
                 
                 <div class="form-group">
                     <label for="deskripsi">deskripsi:</label>
-                    <textarea name="deskripsi" id="deskripsi"></textarea>
+                    <textarea name="deskripsi" id="deskripsi" required></textarea>
                 </div>
 
                 <div class="form-actions">

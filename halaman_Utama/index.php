@@ -34,13 +34,17 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../asett/style_lp.css?v=5">
+
+  <!--animasi AOS-->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
 
   <!-- Top Navigation Bar -->
-  <nav class="navbar">
+  <nav class="navbar" data-aos="fade-down">
     <div class="brand">
-      <span class="brand-img"><i><img src="../asett/logo_Invers_horizontal.jpg" alt="logo" style="max-height: 40px; width: auto;"></i></span>
+      <a href="#home"><span class="brand-img"><i><img src="../asett/logo_Invers_horizontal.jpg" alt="logo" style="max-height: 40px; width: auto;"></i></span></a>
     </div>
 
     <ul class="nav-links">
@@ -55,9 +59,9 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
   </nav>
 
   <!-- 1. HOME SECTION -->
-  <section class="hero" id="home">
+  <section class="hero" id="home" data-aos="fade">
     <div class="hero-overlay"></div>
-    <div class="hero-content">
+    <div class="hero-content" data-aos="fade-right">
       <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Perpustakaan Digital BacaGrid</span>
       <h1>Jelajahi Ilmu, Temukan Inspirasi</h1>
       <p><strong>BacaGrid</strong> adalah ruang digital untuk menjelajahi berbagai koleksi buku dengan mudah. Temukan bacaan favoritmu, tambah wawasan, dan nikmati pengalaman membaca dalam satu tempat.</p>
@@ -71,7 +75,7 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
       <h2>Tentang BacaGrid</h2>
       <p>Mengenal sistem perpustakaan modern yang siap membantu literasi Anda</p>
     </div>
-    <div class="about-container">
+    <div class="about-container" data-aos="fade-right">
       <div class="about-text">
         <h3>Perpustakaan BacaGrid: Ruang Literasi Tanpa Batas</h3>
         <p><strong>Perpustakaan BacaGrid</strong> hadir sebagai pusat literasi modern yang dirancang untuk mempermudah akses informasi dan pengetahuan bagi semua orang. Mengusung konsep keterbukaan dan kemudahan akses, BacaGrid menyediakan ribuan koleksi buku digital, dokumen pengetahuan, hingga ruang baca fisik yang nyaman.</p>
@@ -86,7 +90,7 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
       <h2>Tim Petugas Perpustakaan</h2>
       <p>Petugas kami yang siap membantu segala kebutuhan literasi Anda</p>
     </div>
-    <div class="petugas-grid">
+    <div class="petugas-grid" data-aos="fade-up">
       <?php if (!empty($data_petugas)): ?>
       <?php foreach ($data_petugas as $petugas): ?>
       <div class="petugas-card">
@@ -111,7 +115,7 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
       <h2>Aturan Perpustakaan</h2>
       <p>Ketentuan yang wajib dipatuhi oleh seluruh anggota perpustakaan</p>
     </div>
-    <div class="rules-grid">
+    <div class="rules-grid" data-aos="fade-left">
       <div class="rule-card">
         <i class="fa-solid fa-id-card rule-icon"></i>
         <h3>Kartu Anggota</h3>
@@ -120,7 +124,7 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
       <div class="rule-card">
         <i class="fa-solid fa-clock rule-icon"></i>
         <h3>Batas Waktu Peminjaman</h3>
-        <p>Batas waktu peminjaman buku fisik maksimal 3 hari. Perpanjangan dapat dilakukan online melalui sistem sebelum jatuh tempo.</p>
+        <p>Durasi peminjaman buku fisik bebas selama tidak melewati jatuh tempo. Perpanjangan dapat dilakukan online sebelum tenggat berakhir.</p>
       </div>
       <div class="rule-card">
         <i class="fa-solid fa-hand-holding-heart rule-icon"></i>
@@ -154,7 +158,7 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         </p>
       <?php endif; ?>
     </div>
-    <div class="book-grid">
+    <div class="book-grid" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
       <?php if (!empty($data_buku)): ?>
         <?php foreach ($data_buku as $buku): ?>
           <div class="book-card">
@@ -243,5 +247,11 @@ $data_petugas = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     <p>&copy; 2026 BacaGrid Perpustakaan Digital. Hak Cipta Dilindungi Undang-Undang.</p>
   </footer>
 
+  <script>
+  AOS.init({
+    duration:1500,
+
+  });
+</script>
 </body>
 </html>
