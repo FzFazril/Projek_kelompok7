@@ -1,18 +1,46 @@
 <?php
 include "../../config/koneksi.php";
 
-if (isset($_POST['submit'])) {
-    $nama_lengkap = $_POST['nama_lengkap'];
-    $jabatan = $_POST['jabatan'];
-    $no_hp = $_POST['no_hp'];
-    $deskripsi = $_POST['deskripsi'];
-    $query = "INSERT INTO petugas
-            (nama_lengkap, jabatan, no_hp, deskripsi) VALUES
-            ('$nama_lengkap','$jabatan','$no_hp', '$deskripsi')";
+// Variabel untuk menampung pesan error
+$pesan_error = "";
 
-    mysqli_query($koneksi, $query);
-    header("location:petugas.php");
-} 
+if (isset($_POST['submit'])) {
+    // 1. Amankan data input dengan mysqli_real_escape_string untuk mencegah SQL Injection dasar
+    $nama_lengkap = mysqli_real_escape_string($koneksi, trim($_POST['nama_lengkap']));
+    $jabatan      = mysqli_real_escape_string($koneksi, trim($_POST['jabatan']));
+    $no_hp        = mysqli_real_escape_string($koneksi, trim($_POST['no_hp']));
+    $deskripsi    = mysqli_real_escape_string($koneksi, trim($_POST['deskripsi']));
+    
+    // Validasi Kolom Kosong
+    if (empty($nama_lengkap) || empty($no_hp)) {
+        $pesan_error = "Nama lengkap dan No Telepon wajib diisi!";
+    } 
+    // Validasi Nomor HP harus berupa angka (digit) dan panjang minimal/maksimal (misal: 10 - 13 digit)
+    elseif (!preg_match('/^[0-9]+$/', $no_hp)) {
+        $pesan_error = "Nomor telepon hanya boleh berisi angka!";
+    } 
+    elseif (strlen($no_hp) < 10 || strlen($no_hp) > 15) {
+        $pesan_error = "Nomor telepon harus memiliki panjang antara 10 sampai 15 digit!";
+    } 
+    else {
+        // Cek apakah nomor HP sudah terdaftar sebelumnya (Opsional agar tidak duplikat)
+        $cek_hp = mysqli_query($koneksi, "SELECT * FROM petugas WHERE no_hp = '$no_hp'");
+        if (mysqli_num_rows($cek_hp) > 0) {
+            $pesan_error = "Nomor telepon tersebut sudah terdaftar pada petugas lain!";
+        } else {
+            // Jika semua validasi lolos, jalankan query INSERT
+            $query = "INSERT INTO petugas (nama_lengkap, jabatan, no_hp, deskripsi) 
+                    VALUES ('$nama_lengkap', '$jabatan', '$no_hp', '$deskripsi')";
+            
+            if (mysqli_query($koneksi, $query)) {
+                header("location:petugas.php");
+                exit();
+            } else {
+                $pesan_error = "Gagal menyimpan data: " . mysqli_error($koneksi);
+            }
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -21,7 +49,7 @@ if (isset($_POST['submit'])) {
     <!-- Link CSS Dashboard Utama -->
     <link rel="stylesheet" href="../../asett/dasboard.css?v=6">
     <!-- Link CSS Form Baru -->
-    <link rel="stylesheet" href="../../asett/form.css?v=2">
+    <link rel="stylesheet" href="../../asett/form.css?v=3">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 </head>
@@ -45,6 +73,11 @@ if (isset($_POST['submit'])) {
             <h1>Tambah Data Petugas</h1>
             <div class="user-profile">Welcome to BacaGrid</div>
         </header>
+            <?php if (!empty($pesan_error)) : ?>
+            <div class="alert-error">
+                <i class="fa-solid fa-triangle-exclamation"></i> <?= $pesan_error; ?>
+            </div>
+            <?php endif; ?>
         <section class="form-card">
             <form action="" method="POST">
                 <div class="form-group">

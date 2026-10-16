@@ -86,7 +86,7 @@ $data_pinjam = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         <td>
             <div class="aksi">
                     <?php if($row['status'] == "Dipinjam") : ?>
-                        <a href="../../proses/proses_kembali.php?id_peminjaman=<?= $row['id_peminjaman']; ?>&id_buku=<?= $row['id_buku']; ?>" class="btn-kembali">kembalikan</a>
+                        <a href="../../proses/proses_kembali.php?id_peminjaman=<?= $row['id_peminjaman']; ?>&id_buku=<?= $row['id_buku']; ?>" class="btn-kembali"><i class="fa-solid fa-rotate-left"></i> kembalikan</a>
                     <?php else : ?>
                         <span>Selesai</span>
                     <?php endif; ?>

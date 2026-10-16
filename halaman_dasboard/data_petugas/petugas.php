@@ -49,7 +49,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     <div class="user-profile">Kelola Data Petugas</div>
     </header>
     <div class="btn-tambah">
-        <a href="tambah.php">Tambah Data</a>
+        <a href="tambah.php"><i class="fa-solid fa-plus"></i> Tambah Data</a>
     </div>
     <table>
         <thead>

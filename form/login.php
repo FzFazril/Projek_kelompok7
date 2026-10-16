@@ -5,28 +5,33 @@ include "../config/koneksi.php";
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($koneksi, trim($_POST['username']));
-    $password = mysqli_real_escape_string($koneksi, $_POST['pw']);
+    $username = trim($_POST['username']);
+    $password = $_POST['pw'];
 
-    // Cek username dan password langsung ke tabel admin
-    $query = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
-    $hasil = mysqli_query($koneksi, $query);
+    // Menggunakan Prepared Statement untuk mencegah SQL Injection
+    $stmt = mysqli_prepare($koneksi, "SELECT * FROM admin WHERE username = ?");
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-    if (mysqli_num_rows($hasil) > 0) {
-        $data_admin = mysqli_fetch_assoc($hasil);
+    if ($row = mysqli_fetch_assoc($result)) {
+        // Cek apakah password input cocok dengan hash di database
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['status_login'] = true;
+            $_SESSION['id_admin']     = $row['id_admin'];
+            $_SESSION['nama_admin']   = $row['nama_admin'];
+            $_SESSION['role']         = 'admin';
 
-        // Simpan status login di session
-        $_SESSION['status_login'] = true;
-        $_SESSION['id_admin']     = $data_admin['id_admin'];
-        $_SESSION['nama_admin']   = $data_admin['nama_admin'];
-        $_SESSION['role']         = 'admin';
-
-        header("Location: ../halaman_dasboard/dasboard.php");
-        exit();
+            header("Location: ../halaman_dasboard/dasboard.php");
+            exit();
+        } else {
+            $error = "Username atau Password salah!";
+        }
     } else {
         $error = "Username atau Password salah!";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
